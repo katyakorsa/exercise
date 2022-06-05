@@ -1,46 +1,45 @@
 from behave import *
 from selenium import webdriver
-from pages.locators import AllLocators
+# from env.environment import Environment
 
 
-@given('Открыть страницу "{url}"')
-def launch_ozon(context, url):
-
-    context.driver = webdriver.Chrome()
-    context.driver.get(url)
-
-
-@then('Перейти в раздел Электроника')
-def get_electronics(context, ):
-    context.driver.find_element(*AllLocators.ELECTRONICS).click()
+@step('Открыть страницу "{url}"')
+def load(context, url):
+    context.browser = webdriver.Chrome()
+    context.browser.get(url)
 
 
-@then('Перейти в подраздел Смартфоны')
-def get_smartphones(context):
-    context.driver.find_element(*AllLocators.SMARTPHONES).click()
+# @step('Перейти в раздел Электроника')
+# def get_electronics(context):
+#     context.env.main_page.get_item()
 
 
-@then('Установить фильтры по бренду Apple')
-def set_brand_filter(context):
-    context.driver.find_element(*AllLocators.BRAND_FILTER).click()
+# @step('Перейти в подраздел Смартфоны')
+# def get_smartphones(context):
+#     context.driver.find_element(*AllLocators.SMARTPHONES).click()
+
+#
+# @step('Установить фильтры по бренду Apple')
+# def set_brand_filter(context):
+#     context.driver.find_element(*AllLocators.BRAND_FILTER).click()
 
 
-# @then('Сортировать товары по убыванию цены')
+# @step('Сортировать товары по убыванию цены')
 # def sort_price_desc(context):
-    # context.driver.find_element(*AllLocators.PRICE_DESC).click()
+#     context.driver.find_element(*AllLocators.PRICE_DESC).click()
 
 
-@then('Выбрать первый товар и добавить в корзину')
-def step_impl(context):
-    context.driver.find_element(*AllLocators.CHOOSE_ITEM).click()
+# @step('Выбрать первый товар и добавить в корзину')
+# def step_impl(context):
+#     context.driver.find_element(*AllLocators.CHOOSE_ITEM).click()
+#
+#
+# @step('Открыть корзину')
+# def open_cart(context):
+#     context.driver.find_element(*AllLocators.CART).click()
 
 
-@then('Открыть корзину')
-def open_cart(context):
-    context.driver.find_element(*AllLocators.CART).click()
-
-
-# @then('Сравнить стоимость выбранного предмета и суммы корзины')
+# @step('Сравнить стоимость выбранного предмета и суммы корзины')
 # def step_impl(context):
 #     item = context.driver.find_element(*AllLocators.ITEM)
 #     all_item = context.driver.find_element(*AllLocators.ALL_ITEM)
