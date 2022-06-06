@@ -1,16 +1,16 @@
-from base_page import BasePage
+from pages.base_page import BasePage
 from locators import AllLocators
 
 
 class MainPage(BasePage):
-    def get_item(self):
-        self.find_element(*AllLocators.ЭЛЕКТРОНИКА)
-        self.click(*AllLocators.ЭЛЕКТРОНИКА)
+    def __init__(self, browser, url=''):
+        url = 'https://www.ozon.ru/'
+        super.__init__(browser, url)
 
-    def get_smartphones(self):
-        self.click(*AllLocators.SMARTPHONES)
-
-    # def verify_search_result(self, search_text: str):
-    #     result_text = self.find_element(*AllLocators.locator).text
-    #     assert search_text in result_text, f"Стоимость '{search_text}' выбранного товара " \
-    #                                        f"совпадает с '{result_text}' - суммой корзины"
+    electronics_search = BasePage(*AllLocators.ELECTRONICS)
+    smartphones_search = BasePage(*AllLocators.SMARTPHONES)
+    filter_by_brand = BasePage(*AllLocators.BRAND_FILTER)
+    sort_by_price = BasePage(*AllLocators)
+    add_to_cart_button = BasePage(*AllLocators.ADD_TO_CART)
+    go_to_cart = BasePage(*AllLocators.CART)
+    products_prices = BasePage
